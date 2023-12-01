@@ -3,14 +3,14 @@ import signal
 import time
 from flask import Flask, render_template
 
-socketio = Flask(__name__)
+app = Flask(__name__)
 
-@socketio.route('/')
+@app.route('/')
 def index():
     return render_template('index.html')
 
 if __name__ == '__main__':
-    socketio.run(debug=True)
+    app.run(debug=True)
 
 # Function to be executed when a signal is received
 def signal_handler(sig, frame):
