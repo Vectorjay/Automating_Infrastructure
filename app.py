@@ -11,19 +11,19 @@
 #  SocketIO.run(app, debug=True)
 
 from flask import Flask, render_template
-from flask_socketio import SocketIO
 
 app = Flask(__name__)
-socketio = SocketIO(app)
 
 @app.route('/')
 def index():
-    return render_template('index.html')
-
-@socketio.on('message')
-def handle_message(message):
-    print('Received message: ' + message)
-    # Handle the message received from the client
+    # Your profile information
+    profile = {
+        'name': 'Vector',
+        'occupation': 'Devops engineer',
+        'bio': 'Checkout my linkedin'
+    }
+    return render_template('index.html', profile=profile)
 
 if __name__ == '__main__':
-    socketio.run(app, debug=True)
+    app.run()
+
